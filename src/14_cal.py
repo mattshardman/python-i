@@ -21,4 +21,26 @@ and does the following:
 
 import sys
 import calendar
-from datetime import datetime
+from datetime import date
+
+def return_cal(y, m):
+    calendar.prmonth(y, m) 
+
+def cal(val):
+    today = date.today()
+    val_arr = val.split(" ")
+
+    if not val:
+        return_cal(today.year, today.month)
+    elif len(val_arr) == 1:
+        abbr = inp[:3].capitalize()
+        month = list(calendar.month_abbr).index(abbr)
+        return_cal(today.year, int(month))
+    else:
+        abbr = val_arr[0][:3].capitalize()
+        month = list(calendar.month_abbr).index(abbr)
+        year = int(val_arr[1])
+        return_cal(year, int(month))
+
+inp = input("Enter a data: ")
+cal(inp)
